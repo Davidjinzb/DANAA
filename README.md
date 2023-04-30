@@ -52,5 +52,9 @@ The models in the table above without adversarial training are from [here](https
 
 To run other comparison exps such as `NRDM`, `FIA`, `FDA`, simply replace the `--attack_method` parameter.
 
+- verify
+
+`python verify.py --ori_path ./dataset/images/ --output_dir ./outputs/IMLAA/`
+
 # Reference
 Code refer to: [NAA](https://github.com/jpzhang1810/NAA)

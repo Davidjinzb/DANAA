@@ -97,7 +97,7 @@ def main(ori_path='./dataset/images/',outputs_path='./outputs/',output_file='./l
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--ori_path', default='./dataset/images/')
-    parser.add_argument('--outputs_path',default='./outputs/FIA/')
+    parser.add_argument('--output_dir',default='./outputs/FIA/')
     parser.add_argument('--output_file', default='./log.csv')
     args=parser.parse_args()
     main(args.ori_path,args.outputs_path,args.output_file)
