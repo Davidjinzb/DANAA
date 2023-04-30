@@ -30,7 +30,7 @@ The models in the table above without adversarial training are from [here](https
 # Run
 - IMLAA
 
-`＜python IMLAA.py --model_name inception_v3 --attack_method IMLAA --layer_name InceptionV3/InceptionV3/Mixed_5b/concat --ens 30 --output_dir ./outputs/IMLAA/ --scale 0.25＞`
+`python IMLAA.py --model_name inception_v3 --attack_method IMLAA --layer_name InceptionV3/InceptionV3/Mixed_5b/concat --ens 30 --output_dir ./outputs/IMLAA/ --scale 0.25`
 
 `python IMLAA.py --model_name inception_v4 --attack_method IMLAA --layer_name InceptionV4/InceptionV4/Mixed_5e/concat --ens 30 --output_dir ./outputs/IMLAA/ --scale 0.25`
 
