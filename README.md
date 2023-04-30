@@ -23,12 +23,14 @@ Inception ResNet v2 adv  | [adv_inception_resnet_v2_2017_12_18.tar.gz](http://do
 Inception v3 adv ens3  | [ens3_adv_inception_v3_2017_08_18.tar.gz](http://download.tensorflow.org/models/ens3_adv_inception_v3_2017_08_18.tar.gz)
 Inception v3 adv ens4  | [ens4_adv_inception_v3_2017_08_18.tar.gz](http://download.tensorflow.org/models/ens4_adv_inception_v3_2017_08_18.tar.gz)
 Inception ResNet v2 adv ens3  | [ens_adv_inception_resnet_v2_2017_08_18.tar.gz](http://download.tensorflow.org/models/ens_adv_inception_resnet_v2_2017_08_18.tar.gz)
+
+
 The models in the table above without adversarial training are from [here](https://github.com/tensorflow/models/tree/master/research/slim); all models with adversarial training are from [here](https://github.com/) tensorflow/models/tree/archive/research/adv_imagenet_models). These models need to be downloaded and placed under the `models` dir.
 
 # Run
 - IMLAA
 
-`python IMLAA.py --model_name inception_v3 --attack_method IMLAA --layer_name InceptionV3/InceptionV3/Mixed_5b/concat --ens 30 --output_dir ./outputs/IMLAA/ --scale 0.25`
+`＜python IMLAA.py --model_name inception_v3 --attack_method IMLAA --layer_name InceptionV3/InceptionV3/Mixed_5b/concat --ens 30 --output_dir ./outputs/IMLAA/ --scale 0.25＞`
 
 `python IMLAA.py --model_name inception_v4 --attack_method IMLAA --layer_name InceptionV4/InceptionV4/Mixed_5e/concat --ens 30 --output_dir ./outputs/IMLAA/ --scale 0.25`
 
