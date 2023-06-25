@@ -1,6 +1,6 @@
-# IMLAA
+# DANAA
 
-This Github repository is the IMLAA implementation code
+This Github repository is the DANAA implementation code
 
 # Requirements
 - python 3.6.13
@@ -28,19 +28,19 @@ Inception ResNet v2 adv ens3  | [ens_adv_inception_resnet_v2_2017_08_18.tar.gz](
 The models in the table above without adversarial training are from [here](https://github.com/tensorflow/models/tree/master/research/slim); all models with adversarial training are from [here](https://github.com/) tensorflow/models/tree/archive/research/adv_imagenet_models). These models need to be downloaded and placed under the `models` dir.
 
 # Run
-- IMLAA
+- DANAA
 
-`python IMLAA.py --model_name inception_v3 --attack_method IMLAA --layer_name InceptionV3/InceptionV3/Mixed_5b/concat --ens 30 --output_dir ./outputs/IMLAA/ --scale 0.25`
+`python DANAA.py --model_name inception_v3 --attack_method DANAA --layer_name InceptionV3/InceptionV3/Mixed_5b/concat --ens 30 --output_dir ./outputs/DANAA/ --scale 0.25`
 
-`python IMLAA.py --model_name inception_v4 --attack_method IMLAA --layer_name InceptionV4/InceptionV4/Mixed_5e/concat --ens 30 --output_dir ./outputs/IMLAA/ --scale 0.25`
+`python DANAA.py --model_name inception_v4 --attack_method DANAA --layer_name InceptionV4/InceptionV4/Mixed_5e/concat --ens 30 --output_dir ./outputs/DANAA/ --scale 0.25`
 
-`python IMLAA.py --model_name inception_resnet_v2 --attack_method IMLAA --layer_name InceptionResnetV2/InceptionResnetV2/Conv2d_4a_3x3/Relu --ens 30 --output_dir ./outputs/IMLAA/ --scale 0.25`
+`python DANAA.py --model_name inception_resnet_v2 --attack_method DANAA --layer_name InceptionResnetV2/InceptionResnetV2/Conv2d_4a_3x3/Relu --ens 30 --output_dir ./outputs/DANAA/ --scale 0.25`
 
-`python IMLAA.py --model_name resnet_v2_152 --attack_method IMLAA --layer_name resnet_v2_152/block2/unit_8/bottleneck_v2/add --ens 30 --output_dir ./ouputs/IMLAA/ --scale 0.25`
+`python DANAA.py --model_name resnet_v2_152 --attack_method DANAA --layer_name resnet_v2_152/block2/unit_8/bottleneck_v2/add --ens 30 --output_dir ./ouputs/DANAA/ --scale 0.25`
 
-- IMLAA-PIDI
+- DANAA-PIDI
 
-`python IMLAA.py --model_name inception_v3 --attack_method IMLAAPIDI --layer_name InceptionV3/InceptionV3/Mixed_5b/concat --ens 30 --output_dir ./outputs/IMLAA/ --scale 0.25`
+`python DANAA.py --model_name inception_v3 --attack_method DANAAPIDI --layer_name InceptionV3/InceptionV3/Mixed_5b/concat --ens 30 --output_dir ./outputs/DANAA/ --scale 0.25`
 
 - NAA
 
@@ -54,7 +54,7 @@ To run other comparison exps such as `NRDM`, `FIA`, `FDA`, simply replace the `-
 
 - verify
 
-`python verify.py --ori_path ./dataset/images/ --output_dir ./outputs/IMLAA/`
+`python verify.py --ori_path ./dataset/images/ --output_dir ./outputs/DANAA/`
 
 # Reference
 Code refer to: [NAA](https://github.com/jpzhang1810/NAA)
