@@ -1,60 +1,81 @@
-# DANAA
+# Implementation of DANAA: Double Adversarial Neuron Attribution for Transferable Attacks
 
-This Github repository is the DANAA implementation code
+This repository contains the official implementation code for the research paper "DANAA: Towards Transferable Attacks with Double Adversarial Neuron Attribution." The DANAA framework is designed to generate adversarial examples with enhanced transferability by leveraging the concept of double adversarial neuron attribution.
 
-# Requirements
-- python 3.6.13
-- keras 2.2.4
-- numpy 1.16.2
-- tensorflow 1.14.0
-- tqdm 4.63.1
-- pillow 6.0.0
-- scipy 1.2.1
+## Prerequisites
 
-# Setup
-Model  | Download Link
+The implementation requires the following software and libraries:
+
+- Python 3.6.13
+- Keras 2.2.4
+- NumPy 1.16.2
+- TensorFlow 1.14.0
+- TQDM 4.63.1
+- Pillow 6.0.0
+- SciPy 1.2.1
+
+## Pre-trained Models
+
+For the experiments, pre-trained models are employed. The following table lists the required models along with their download links:
+
+Model  | Source
 ------------- | -------------
-Inception V3  | [inception_v3_2016_08_28.tar.gz](http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz)
-Inception V4| [inception_v4_2016_09_09.tar.gz](http://download.tensorflow.org/models/inception_v4_2016_09_09.tar.gz)
-Inception-ResNet-v2  | [inception_resnet_v2_2016_08_30.tar.gz](http://download.tensorflow.org/models/inception_resnet_v2_2016_08_30.tar.gz)
-ResNet V2 152  | [resnet_v2_152_2017_04_14.tar.gz](http://download.tensorflow.org/models/resnet_v2_152_2017_04_14.tar.gz)
-Inception v3 adv | [adv_inception_v3_2017_08_18.tar.gz](http://download.tensorflow.org/models/adv_inception_v3_2017_08_18.tar.gz)
-Inception ResNet v2 adv  | [adv_inception_resnet_v2_2017_12_18.tar.gz](http://download.tensorflow.org/models/adv_inception_resnet_v2_2017_12_18.tar.gz)
-Inception v3 adv ens3  | [ens3_adv_inception_v3_2017_08_18.tar.gz](http://download.tensorflow.org/models/ens3_adv_inception_v3_2017_08_18.tar.gz)
-Inception v3 adv ens4  | [ens4_adv_inception_v3_2017_08_18.tar.gz](http://download.tensorflow.org/models/ens4_adv_inception_v3_2017_08_18.tar.gz)
-Inception ResNet v2 adv ens3  | [ens_adv_inception_resnet_v2_2017_08_18.tar.gz](http://download.tensorflow.org/models/ens_adv_inception_resnet_v2_2017_08_18.tar.gz)
+Inception v3  | [Download](http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz)
+Inception v4| [Download](http://download.tensorflow.org/models/inception_v4_2016_09_09.tar.gz)
+Inception-ResNet-v2  | [Download](http://download.tensorflow.org/models/inception_resnet_v2_2016_08_30.tar.gz)
+ResNet v2 152  | [Download](http://download.tensorflow.org/models/resnet_v2_152_2017_04_14.tar.gz)
+Inception v3 adv | [Download](http://download.tensorflow.org/models/adv_inception_v3_2017_08_18.tar.gz)
+Inception ResNet v2 adv  | [Download](http://download.tensorflow.org/models/adv_inception_resnet_v2_2017_12_18.tar.gz)
+Inception v3 adv ens3  | [Download](http://download.tensorflow.org/models/ens3_adv_inception_v3_2017_08_18.tar.gz)
+Inception v3 adv ens4  | [Download](http://download.tensorflow.org/models/ens4_adv_inception_v3_2017_08_18.tar.gz)
+Inception ResNet v2 adv ens3  | [Download](http://download.tensorflow.org/models/ens_adv_inception_resnet_v2_2017_08_18.tar.gz)|
 
 
-The models in the table above without adversarial training are from [here](https://github.com/tensorflow/models/tree/master/research/slim); all models with adversarial training are from [here](https://github.com/) tensorflow/models/tree/archive/research/adv_imagenet_models). These models need to be downloaded and placed under the `models` dir.
+The non-adversarial models are sourced from [TensorFlow's Slim Model Library](https://github.com/tensorflow/models/tree/master/research/slim), while the adversarially trained models can be found in the [Adversarial ImageNet Models Repository](https://github.com/tensorflow/models/tree/archive/research/adv_imagenet_models). Download and place these models in the `models` directory within the repository.
 
-# Run
-- DANAA
+## Execution Instructions
 
-`python DANAA.py --model_name inception_v3 --attack_method DANAA --layer_name InceptionV3/InceptionV3/Mixed_5b/concat --ens 30 --output_dir ./outputs/DANAA/ --scale 0.25`
+### Running DANAA Attacks
 
-`python DANAA.py --model_name inception_v4 --attack_method DANAA --layer_name InceptionV4/InceptionV4/Mixed_5e/concat --ens 30 --output_dir ./outputs/DANAA/ --scale 0.25`
+To execute the DANAA attack method, use the following command format, adjusting parameters as necessary for the desired model and settings:
 
-`python DANAA.py --model_name inception_resnet_v2 --attack_method DANAA --layer_name InceptionResnetV2/InceptionResnetV2/Conv2d_4a_3x3/Relu --ens 30 --output_dir ./outputs/DANAA/ --scale 0.25`
+```bash
+python DANAA.py --model_name <model> --attack_method DANAA --layer_name <layer> --ens 30 --output_dir ./outputs/DANAA/ --scale 0.25
+```
 
-`python DANAA.py --model_name resnet_v2_152 --attack_method DANAA --layer_name resnet_v2_152/block2/unit_8/bottleneck_v2/add --ens 30 --output_dir ./ouputs/DANAA/ --scale 0.25`
+For instance, to run DANAA on the Inception V3 model, the command would be:
 
-- DANAA-PIDI
+```bash
+python DANAA.py --model_name inception_v3 --attack_method DANAA --layer_name InceptionV3/InceptionV3/Mixed_5b/concat --ens 30 --output_dir ./outputs/DANAA/ --scale 0.25
+```
 
-`python DANAA.py --model_name inception_v3 --attack_method DANAAPIDI --layer_name InceptionV3/InceptionV3/Mixed_5b/concat --ens 30 --output_dir ./outputs/DANAA/ --scale 0.25`
+### Additional Attack Methods
 
-- NAA
+The framework also supports comparison with other attack methodologies such as NAA, MIM, NRDM, FIA, and FDA. To execute these, simply replace the `--attack_method` parameter with the desired attack type.
 
-`python NAA.py --model_name inception_v3 --attack_method NAA --layer_name InceptionV3/InceptionV3/Mixed_5b/concat --ens 30 --output_dir ./outputs/NAA/`
+### Verification
 
-- MIM
+To verify the effectiveness of the generated adversarial examples, use the `verify.py` script as follows:
 
-`python attacks.py --model_name inception_v3 --attack_method MIM --layer_name InceptionV3/InceptionV3/Mixed_5b/concat --output_dir ./adv/NAA/`
+```bash
+python verify.py --ori_path ./dataset/images/ --output_dir ./outputs/DANAA/
+```
 
-To run other comparison exps such as `NRDM`, `FIA`, `FDA`, simply replace the `--attack_method` parameter.
+## Citing DANAA
 
-- verify
+For academic use, please cite the following paper. 
 
-`python verify.py --ori_path ./dataset/images/ --output_dir ./outputs/DANAA/`
+```
+@inproceedings{jin2023danaa,
+  title={DANAA: Towards transferable attacks with double adversarial neuron attribution},
+  author={Jin, Zhibo and Zhu, Zhiyu and Wang, Xinyi and Zhang, Jiayu and Shen, Jun and Chen, Huaming},
+  booktitle={International Conference on Advanced Data Mining and Applications},
+  pages={456--470},
+  year={2023},
+  organization={Springer}
+}
+```
 
-# Reference
-Code refer to: [NAA](https://github.com/jpzhang1810/NAA)
+## Refenece
+Code refer to: [NAA](https://github.com/jpzhang1810/NAA).
+
