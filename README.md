@@ -1,6 +1,6 @@
 # Implementation of DANAA: Double Adversarial Neuron Attribution for Transferable Attacks
 
-This repository contains the official implementation code for the research paper "DANAA: Towards Transferable Attacks with Double Adversarial Neuron Attribution." The DANAA framework is designed to generate adversarial examples with enhanced transferability by leveraging the concept of double adversarial neuron attribution.
+This repository contains the official implementation code for the research paper [DANAA: Towards Transferable Attacks with Double Adversarial Neuron Attribution](https://link.springer.com/chapter/10.1007/978-3-031-46664-9_31). The DANAA framework is designed to generate adversarial examples with enhanced transferability by leveraging the concept of double adversarial neuron attribution.
 
 ## Prerequisites
 
